@@ -8,7 +8,6 @@ import NavBarI18n from '@/layouts/components/NavBarI18n.vue'
 import NavBarNotifications from '@/layouts/components/NavBarNotifications.vue'
 import NavbarShortcuts from '@/layouts/components/NavbarShortcuts.vue'
 import NavbarThemeSwitcher from '@/layouts/components/NavbarThemeSwitcher.vue'
-import NavSearchBar from '@/layouts/components/NavSearchBar.vue'
 import UserProfile from '@/layouts/components/UserProfile.vue'
 
 // @layouts plugin
@@ -24,7 +23,7 @@ const { width: windowWidth } = useWindowSize()
   >
     <!-- 👉 navbar -->
     <template #navbar="{ toggleVerticalOverlayNavActive }">
-      <div class="d-flex h-100 align-center">
+      <div class="d-flex h-100 banner_header">
         <VBtn
           v-if="isLessThanOverlayNavBreakpoint(windowWidth)"
           icon
@@ -40,15 +39,19 @@ const { width: windowWidth } = useWindowSize()
           />
         </VBtn>
 
-        <NavSearchBar class="ms-lg-n3" />
+        <!-- <NavSearchBar class="ms-lg-n3" /> -->
+        <VImg
+          class="banner_Img_01"
+          src="/images/tet_2023/banner_01.png"
+        />
 
-        <VSpacer />
+        <VSpacer class="mt-3" />
 
-        <NavBarI18n />
-        <NavbarThemeSwitcher />
-        <NavbarShortcuts />
-        <NavBarNotifications class="me-2" />
-        <UserProfile />
+        <NavBarI18n class="mt-3" />
+        <NavbarThemeSwitcher class="mt-3" />
+        <NavbarShortcuts class="mt-3" />
+        <NavBarNotifications class="me-2 mt-3" />
+        <UserProfile class="mt-3" />
       </div>
     </template>
 
@@ -68,6 +71,6 @@ const { width: windowWidth } = useWindowSize()
     </template>
 
     <!-- 👉 Customizer -->
-    <TheCustomizer />
+    <!-- <TheCustomizer /> -->
   </VerticalNavLayout>
 </template>

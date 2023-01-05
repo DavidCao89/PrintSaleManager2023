@@ -1,0 +1,16 @@
+.v-card--flat {
+  box-shadow: none;
+  inline-size: 100% !important;
+}
+
+.banner_header {
+  .banner_Img_01 {
+    inset-inline-start: -12px;
+  }
+
+  .v-img__img--contain {
+    float: inline-start;
+    inline-size: auto !important;
+    object-fit: contain;
+  }
+}

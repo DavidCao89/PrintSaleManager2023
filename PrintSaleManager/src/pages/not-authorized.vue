@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import page401 from '@images/pages/401.png'
-import miscMaskDark from '@images/pages/misc-mask-dark.png'
-import miscMaskLight from '@images/pages/misc-mask-light.png'
+import page401 from '@images/pages/401.png';
+import miscMaskDark from '@images/pages/misc-mask-dark.png';
+import miscMaskLight from '@images/pages/misc-mask-light.png';
 
-import { useGenerateImageVariant } from '@core/composable/useGenerateImageVariant'
+import { useGenerateImageVariant } from '@core/composable/useGenerateImageVariant';
 
 const authThemeMask = useGenerateImageVariant(miscMaskLight, miscMaskDark)
 </script>
@@ -13,11 +13,11 @@ const authThemeMask = useGenerateImageVariant(miscMaskLight, miscMaskDark)
     <div class="misc-center-content text-center mb-12">
       <!-- 👉 Title and subtitle -->
       <h4 class="text-h4 font-weight-medium mb-3">
-        You are not authorized! 🔐
+        KHÔNG ĐƯỢC PHÉP TRUY CẬP! 🔐
       </h4>
-      <p>You don't have permission to access this page. Go Home!</p>
+      <p>Bạn không được quyền truy cập chức năng này. Vui lòng liên hệ ADMIN!</p>
       <VBtn to="/">
-        Back to Home
+        Quay về trang đăng nhập
       </VBtn>
     </div>
 

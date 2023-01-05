@@ -28,6 +28,9 @@
 // libs
 @use "libs/perfect-scrollbar";
 
+// itphonui
+@use "itphonui";
+
 a {
   color: rgb(var(--v-theme-primary));
   text-decoration: none;

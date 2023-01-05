@@ -1,0 +1,36 @@
+.layout-wrapper.layout-nav-type-vertical .layout-navbar .navbar-content-container {
+  padding-inline: 12px;
+}
+
+.nFooter {
+  margin: 0 auto;
+}
+
+.nLogin {
+  .title {
+    font-weight: bold;
+    font-family: Verdana !important;
+    text-align: center;
+  }
+}
+
+.nImageHeader {
+  .v-img__img {
+    position: inherit;
+  }
+}
+
+.nHeader {
+  margin-left: 10px;
+  margin-right: 10px;
+
+  .hello {
+    font-size: 11px;
+    color: red;
+  }
+
+  .fullName {
+    font-weight: bold;
+    color: blue;
+  }
+}
