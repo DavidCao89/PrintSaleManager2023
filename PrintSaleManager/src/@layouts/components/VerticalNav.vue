@@ -1,8 +1,9 @@
 <script lang="ts" setup>
+import { useSystemNStore } from '@/plugins/nStore/system/systemNStore'
 import { injectionKeyIsVerticalNavHovered, useLayouts } from '@layouts'
-import { VerticalNavGroup, VerticalNavLink, VerticalNavSectionTitle } from '@layouts/components'
+import { VerticalNavLink } from '@layouts/components'
 import { config } from '@layouts/config'
-import type { NavGroup, NavLink, NavSectionTitle, VerticalNavItems } from '@layouts/types'
+import type { VerticalNavItems } from '@layouts/types'
 import type { Component } from 'vue'
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 import { VNodeRenderer } from './VNodeRenderer'
@@ -30,11 +31,21 @@ const { isVerticalNavCollapsed: isCollapsed, isLessThanOverlayNavBreakpoint, isV
 
 const hideTitleAndIcon = isVerticalNavMini(windowWidth, isHovered)
 
-const resolveNavItemComponent = (item: NavLink | NavSectionTitle | NavGroup) => {
-  if ('heading' in item)
-    return VerticalNavSectionTitle
-  if ('children' in item)
-    return VerticalNavGroup
+// const resolveNavItemComponent = (item: NavLink | NavSectionTitle | NavGroup) => {
+//   if ('heading' in item)
+//     return VerticalNavSectionTitle
+//   if ('children' in item)
+//     return VerticalNavGroup
+
+//   return VerticalNavLink
+// }
+const resolveNavItemComponent = (item: string) => {
+  debugger
+
+  // if ('heading' in item)
+  //   return VerticalNavSectionTitle
+  // if ('children' in item)
+  //   return VerticalNavGroup
 
   return VerticalNavLink
 }
@@ -55,6 +66,9 @@ const updateIsVerticalNavScrolled = (val: boolean) => isVerticalNavScrolled.valu
 const handleNavScroll = (evt: Event) => {
   isVerticalNavScrolled.value = (evt.target as HTMLElement).scrollTop > 0
 }
+
+// const { getPostComments } = storeToRefs(useCommentStore())
+const { getterMenuItems } = storeToRefs(useSystemNStore())
 </script>
 
 <template>
@@ -131,9 +145,10 @@ const handleNavScroll = (evt: Event) => {
         :options="{ wheelPropagation: false }"
         @ps-scroll-y="handleNavScroll"
       >
+        <!-- v-for="(item, index) in navItems" -->
         <Component
           :is="resolveNavItemComponent(item)"
-          v-for="(item, index) in navItems"
+          v-for="(item, index) in getterMenuItems"
           :key="index"
           :item="item"
         />

@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { loginService } from '@/plugins/nservices/loginService'
+import { NCoreConfig } from '@/plugins/nservices/NCoreConfig'
+import { useSystemNStore } from '@/plugins/nStore/system/systemNStore'
 import { requiredValidator } from '@validators'
 import { VBtn, VCard, VCardText, VCheckbox, VCol, VDivider, VForm, VImg, VProgressCircular, VRow, VTextField } from 'vuetify/components'
 
@@ -20,15 +22,19 @@ const email = ref('admin@demo.com')
 const password = ref('admin')
 const rememberMe = ref(false)
 const isLoading = ref(false)
+const useSystemStore = useSystemNStore()
 
 const login = async () => {
   isLoading.value = true
 
   const resultApi = await loginService(email.value, password.value)
   if (resultApi) {
-    localStorage.setItem('userData', JSON.stringify(resultApi.userFile))
-    localStorage.setItem('accessToken', JSON.stringify(resultApi.accesstoken))
-    localStorage.setItem('menuRole', JSON.stringify(resultApi.menuRoles))
+    localStorage.setItem(NCoreConfig.userData, JSON.stringify(resultApi.userFile))
+    localStorage.setItem(NCoreConfig.accessToken, JSON.stringify(resultApi.accesstoken))
+    localStorage.setItem(NCoreConfig.refreshToken, JSON.stringify(resultApi.refreshToken))
+    localStorage.setItem(NCoreConfig.menuRoleItem, JSON.stringify(resultApi.menuRoles))
+
+    useSystemStore.addMenuItems(resultApi.menuRoles)
     router.replace(route.query.to ? String(route.query.to) : '/')
   }
   else { isLoading.value = false }
